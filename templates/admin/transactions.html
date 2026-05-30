@@ -44,7 +44,7 @@
                             {% endif %}
 
                             {% if txn.investor %}
-                            <small class="text-muted">By {{ txn.investor.username }} (ID: {{ txn.investor.id }})</small>
+                            <small class="text-muted">By {{ txn.investor.name }} (ID: {{ txn.investor.id }})</small>
                             {% else %}
                             <small class="text-muted">By UserId: {{ txn.investor_id }}</small>
                             {% endif %}

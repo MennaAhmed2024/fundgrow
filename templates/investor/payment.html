@@ -69,11 +69,9 @@
                             - <strong>Total Investment Processed:</strong> ${{ '{:,.2f}'.format(investment_amount)
                             }}<br>
                             - <strong>Platform Commission Fee ({{ platform_fee_percentage }}%):</strong> <span
-                                class="text-danger fw-bold">${{ '{:,.2f}'.format(investment_amount *
-                                (platform_fee_percentage / 100)) }}</span><br>
+                                class="text-danger fw-bold">${{ '{:,.2f}'.format(platform_fee) }}</span><br>
                             - <strong>Net Amount to Startup:</strong> <span class="text-success fw-bold">${{
-                                '{:,.2f}'.format(investment_amount - (investment_amount * (platform_fee_percentage /
-                                100))) }}</span><br><br>
+                                '{:,.2f}'.format(net_amount) }}</span><br><br>
                             By checking the box below, you consent to the {{ platform_fee_percentage }}% platform fee
                             deduction and legally bind yourself to this Non-Disclosure Agreement.
                         </p>

@@ -55,11 +55,16 @@ def invest(project_id):
             flash(f'Investment exceeds the remaining goal amount! Maximum allowed is ${val}.', 'warning')
             return redirect(url_for('investor.invest', project_id=project.id))
 
+        platform_fee = investment_amount * (platform_fee_percentage / decimal.Decimal('100.00'))
+        net_amount = investment_amount - platform_fee
+
         # Show mock payment confirmation
         return render_template('investor/payment.html', 
                                project=project, 
                                percentage=percentage, 
                                investment_amount=investment_amount,
+                               platform_fee=platform_fee,
+                               net_amount=net_amount,
                                platform_fee_percentage=platform_fee_percentage)
 
     return render_template('investor/invest.html', project=project, platform_fee_percentage=platform_fee_percentage)
@@ -112,7 +117,7 @@ def process_payment(project_id):
     db.session.commit()
     
     flash('Payment successful! Investment recorded.', 'success')
-    return render_template('investor/success.html', transaction=txn, project=project, net=net_amount)
+    return render_template('investor/success.html', transaction=txn, project=project, net=net_amount, percentage=percentage)
 
 @investor_bp.route('/history')
 @login_required

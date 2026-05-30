@@ -28,6 +28,7 @@ def migrate_db():
             sender_id INT NOT NULL,
             receiver_id INT NOT NULL,
             content TEXT NOT NULL,
+            is_read BOOLEAN DEFAULT FALSE,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
             FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -36,6 +37,9 @@ def migrate_db():
     """)
     except Exception as e:
         print("Error creating messages:", e)
+
+    try: cursor.execute("ALTER TABLE messages ADD COLUMN is_read BOOLEAN DEFAULT FALSE;")
+    except: pass
 
     connection.commit()
     connection.close()

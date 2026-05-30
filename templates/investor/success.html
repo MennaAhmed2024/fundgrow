@@ -25,7 +25,7 @@
                     </div>
                     <div class="row mb-3 fs-5">
                         <div class="col-6 text-muted">Ownership Equity:</div>
-                        <div class="col-6 fw-bold"><span class="badge bg-secondary fs-6">{{ (transaction.amount / project.goal_amount * 100)|round(2) if project.goal_amount and project.goal_amount > 0 else 0 }}%</span></div>
+                        <div class="col-6 fw-bold"><span class="badge bg-secondary fs-6">{{ percentage }}%</span></div>
                     </div>
                     <div class="row mb-3 fs-5">
                         <div class="col-6 text-muted">Amount Invested:</div>

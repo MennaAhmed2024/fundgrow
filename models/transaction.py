@@ -11,3 +11,7 @@ class Transaction(db.Model):
     transferred_amount = db.Column(db.Numeric(15, 2), nullable=False)
     transaction_reference = db.Column(db.String(100), unique=True, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    investor = db.relationship('User')
+    project = db.relationship('Project')
+
